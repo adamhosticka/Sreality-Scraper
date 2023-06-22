@@ -17,12 +17,12 @@ class PostgresqlPipeline:
     CREATE_FLATS_TABLE_QUERY = sql.SQL("""
         CREATE TABLE IF NOT EXISTS flats (
             id SERIAL PRIMARY KEY,
-            title VARCHAR(255),
-            image_data INTEGER
+            title VARCHAR(64),
+            image VARCHAR(128)
         )
     """)
     INSERT_FLAT_QUERY = sql.SQL("""
-        INSERT INTO flats (title, image_data) VALUES (%s, %s)
+        INSERT INTO flats (title, image) VALUES (%s, %s)
     """)
 
     def __init__(self):
@@ -52,5 +52,5 @@ class PostgresqlPipeline:
 
     def process_item(self, item, spider):
         adapter = ItemAdapter(item)
-        self.cursor.execute(self.INSERT_FLAT_QUERY, (adapter.get('text'), 123))
+        self.cursor.execute(self.INSERT_FLAT_QUERY, (adapter.get('title'), adapter.get("image")))
         return item

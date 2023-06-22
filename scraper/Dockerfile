@@ -10,4 +10,4 @@ COPY . .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-CMD scrapy crawl quotes_spider
+CMD scrapy crawl flats_spider

@@ -21,7 +21,7 @@ def get_flats() -> list:
     flats = [{
         "id": flat[0],
         "title": flat[1],
-        "img_data": flat[2]
+        "image": flat[2]
     } for flat in flats_db]
     connection.commit()
     cursor.close()
