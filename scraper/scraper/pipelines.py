@@ -29,7 +29,6 @@ class PostgresqlPipeline:
         self.connection = None
         self.cursor = None
         self.flats_loaded = 0
-        print(f"HOST: {self.HOST}\nDB: {self.DATABASE}\nUSER: {self.USER}\nPASS: {self.PASSWORD}\n")
 
     def open_spider(self, spider):
         self.connection = psycopg2.connect(
@@ -53,6 +52,5 @@ class PostgresqlPipeline:
 
     def process_item(self, item, spider):
         adapter = ItemAdapter(item)
-        print("PRIDAVAM ITEM\n\n\n\n")
         self.cursor.execute(self.INSERT_FLAT_QUERY, (adapter.get('text'), 123))
         return item

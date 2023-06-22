@@ -21,5 +21,5 @@ class QuotesSpider(scrapy.Spider):
             }
             self.quotes_loaded += 1
             if self.quotes_loaded >= self.QUOTES_TO_LOAD:
-                print("CLOSING DOWN \n\n\n\n")
+                print("Closing down the spider.\n")
                 raise CloseSpider(f"Required number of quotes ({self.QUOTES_TO_LOAD} loaded.")
