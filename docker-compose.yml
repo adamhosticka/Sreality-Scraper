@@ -14,7 +14,21 @@ services:
                         - db:/var/lib/pgsql/data
                 ports:
                         - "5432:5432"
-
+        server:
+                build:
+                        context: ./server
+                restart: on-failure
+                container_name: ${SERVER_CONTAINER_NAME}
+                depends_on:
+                        - postgres
+                environment:
+                        DB_HOST: postgres
+                        DB_PORT: 5432
+                        DB_NAME: ${POSTGRES_DB}
+                        DB_USER: ${POSTGRES_USER}
+                        DB_PASS: ${POSTGRES_PASSWORD}
+                ports:
+                        - "8080:8080"
 volumes:
         db:
                 name: "db_volume_001"
