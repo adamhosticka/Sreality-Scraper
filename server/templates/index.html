@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sreality flats</title>
+</head>
+<body>
+    <div id="flats">
+        {%for i in range(0, flats_cnt)%}
+        <div>
+            <h4>{{i+1}}) {{flats[i]["title"]}}</h4>
+            <img src="{{flats[i]['image']}}" \>
+        </div>
+        {%endfor%}
+    </div>
+</body>
+</html>

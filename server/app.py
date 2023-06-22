@@ -2,7 +2,7 @@ import os
 
 import psycopg2
 from psycopg2 import sql
-from flask import Flask
+from flask import Flask, render_template
 
 
 app = Flask(__name__)
@@ -31,7 +31,8 @@ def get_flats() -> list:
 
 @app.route("/")
 def landing_page():
-    return get_flats()
+    flats = get_flats()
+    return render_template("index.html", flats_cnt=len(flats), flats=flats)
 
 
 if __name__ == '__main__':

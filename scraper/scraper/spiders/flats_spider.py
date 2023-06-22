@@ -23,4 +23,4 @@ class FlatsSpider(scrapy.Spider):
             self.flats_loaded += 1
             if self.flats_loaded >= self.FLATS_TO_LOAD:
                 print("Closing down the spider.\n")
-                raise CloseSpider(f"Required number of flats ({self.FLATS_TO_LOAD} loaded.")
+                raise CloseSpider(f"Required number of flats ({self.FLATS_TO_LOAD}) loaded.")
